@@ -7,6 +7,7 @@ require 'faker'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 SubscriptionTea.destroy_all
+CustomerSubscription.destroy_all
 Tea.destroy_all
 Subscription.destroy_all
 Customer.destroy_all
@@ -18,11 +19,13 @@ wonka = Customer.create(
   address: "123 WW Lane Denver CO, 57832"
 )
 
-subscription = wonka.subscriptions.create(
+subscription = Subscription.create(
   title: "3 For 50%",
   price: 20.55,
   frequency: 0
 )
+
+CustomerSubscription.create(customer_id: wonka.id, subscription_id: subscription.id)
 
 tea1 = Tea.create(title: "black", description: "black tea", temperature: "90", brew_time: 10)
 tea2 = Tea.create(title: "green", description: "green tea", temperature: "90", brew_time: 10)

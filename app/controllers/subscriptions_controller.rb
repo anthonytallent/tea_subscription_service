@@ -1,5 +1,5 @@
 class SubscriptionController < ApplicationController
-  def create
+  def update
     
   end
 end

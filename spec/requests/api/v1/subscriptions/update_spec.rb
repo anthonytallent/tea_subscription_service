@@ -12,23 +12,22 @@ RSpec.describe "Subscription Requests" do
     @subscription = Subscription.create(
       title: "3 For 50%",
       price: 20.55,
-      frequency: 0
     )
     
-    CustomerSubscription.create(customer_id: @wonka.id, subscription_id: @subscription.id)
+    @cust_sub = CustomerSubscription.create(customer_id: @wonka.id, subscription_id: @subscription.id, frequency: 0)
   end
   it "can update it's status" do
-    previous_status = @subscription.status
+    previous_status = @cust_sub.status
     customer_subscription_params = ({
       customer_id: @wonka.id,
       subscription_id: @subscription.id
     })
     headers = {"CONTENT_TYPE" => "application/json"}
 
-    patch "/api/v1/subscriptions/#{@subscription.id}", headers: headers, params: JSON.generate(customer_subscription_params)
-    updated_subscription = Subscription.last
+    patch "/api/v1/customer_subscriptions/#{@cust_sub.id}", headers: headers, params: JSON.generate(customer_subscription_params)
+    updated_subscription = CustomerSubscription.last
     expect(response).to be_successful
-    expect(@subscription.status).to_not eq(updated_subscription.status)
+    expect(@cust_sub.status).to_not eq(updated_subscription.status)
     expect(updated_subscription.status).to eq("cancelled")
   end
 end

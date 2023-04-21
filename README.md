@@ -13,6 +13,12 @@
 
 Clone this repo down into your desired directory and open it up in your desired editor
 
+Then install all the necessary gems with
+
+```bash
+bundle install
+```
+
 Then to establish a database, run:
 
 ```bash
@@ -71,7 +77,7 @@ This endpoint will cancel a subscription for a user. The request is the same as 
 Now call this endpoint
 
 ```bash
-patch /api/v1/subscriptions/1
+patch /api/v1/customer_subscriptions/1
 ```
 
 ### Get All a User's Information and Subscriptions

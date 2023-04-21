@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :customers, only: [:show]
-      resources :subscriptions, only: [:update], controller: "subscriptions"
-      resources :customer_subscriptions, only: [:create], controller: "customer_subscriptions"
+      # resources :subscriptions, only: [:update], controller: "subscriptions"
+      resources :customer_subscriptions, only: [:create, :update], controller: "customer_subscriptions"
     end
   end
   # post "/customer_subscriptions/:customer_id/:subscription_id", to: "customer_subscriptions#create"

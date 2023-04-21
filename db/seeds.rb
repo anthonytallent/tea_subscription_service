@@ -22,10 +22,9 @@ wonka = Customer.create(
 subscription = Subscription.create(
   title: "3 For 50%",
   price: 20.55,
-  frequency: 0
 )
 
-CustomerSubscription.create(customer_id: wonka.id, subscription_id: subscription.id)
+CustomerSubscription.create(customer_id: wonka.id, subscription_id: subscription.id, frequency: 0)
 
 tea1 = Tea.create(title: "black", description: "black tea", temperature: "90", brew_time: 10)
 tea2 = Tea.create(title: "green", description: "green tea", temperature: "90", brew_time: 10)

@@ -12,10 +12,9 @@ RSpec.describe "Customer Requests" do
     @subscription = Subscription.create(
       title: "3 For 50%",
       price: 20.55,
-      frequency: 0
     )
     
-    CustomerSubscription.create(customer_id: @wonka.id, subscription_id: @subscription.id)
+    @cust_sub = CustomerSubscription.create(customer_id: @wonka.id, subscription_id: @subscription.id, frequency: 0)
   end
 
   describe "happy path" do

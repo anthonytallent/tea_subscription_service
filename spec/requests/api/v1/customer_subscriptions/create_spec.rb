@@ -12,14 +12,16 @@ RSpec.describe "Customer Subscriptions Create" do
     @subscription = Subscription.create(
       title: "3 For 50%",
       price: 20.55,
-      frequency: 0
     )
+    
+    @cust_sub = CustomerSubscription.create(customer_id: @wonka.id, subscription_id: @subscription.id, frequency: 0)
   end
   describe "happy path" do
     it "can create a Customer Subscription" do
       customer_subscription_params = ({
         customer_id: @wonka.id,
-        subscription_id: @subscription.id
+        subscription_id: @subscription.id,
+        frequency: 0
       })
 
       headers = {"CONTENT_TYPE" => "application/json"}
